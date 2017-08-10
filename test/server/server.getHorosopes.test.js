@@ -8,7 +8,7 @@ var setupDb = require('./setup-db')
 
 setupDb(test,createServer)
 
-test.cb('testing GET /api/horoscopes & 12 horoscopes', t => {
+test.cb.serial('testing GET /api/horoscopes & 12 horoscopes', t => {
   request(t.context.app)
     .get('/v1/api/horoscopes')
     .expect(200)
@@ -19,14 +19,13 @@ test.cb('testing GET /api/horoscopes & 12 horoscopes', t => {
     })
 })
 
-test.cb
-('testing GET /api/horoscopes/aries for correct data', t => {
+test.cb.serial
+('testing GET /api/horoscopes/signs/aries for correct data', t => {
   request(t.context.app)
-    .get('/v1/api/horoscopes/Aries')
+    .get('/v1/api/horoscopes/sign/Aries')
     .expect(200)
     .end((err,res) => {
       if (err) console.log(err);
-      // console.log(res.body)
       t.is("Aries", res.body[0].star_signs)
       t.is(1, res.body.length)
       t.regex(res.body[0].image_url, /Aries\.jpg/)
@@ -35,14 +34,13 @@ test.cb
     })
 })
 
-test.cb
+test.cb.serial
 ('testing GET /api/horoscopes/aries for correct data', t => {
   request(t.context.app)
-    .get('/v1/api/horoscopes/101')
+    .get('/v1/api/horoscopes/201')
     .expect(200)
     .end((err,res) => {
       if (err) console.log(err);
-      // console.log(res.body)
       t.is("Bob1", res.body[0].name)
       t.is("201", res.body[0].horoscope_id)
       t.is("Aries", res.body[0].star_signs)

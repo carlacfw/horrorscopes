@@ -28,7 +28,7 @@ test.cb('read users db', t => {
 })
 
 test.cb('POST /form', t => {
-usersDb.getUsers(t.context.db)
+  request(t.context.app)
     .post('api/users')
     .send({name: 'bob3'})
     .end((err, res) => {
