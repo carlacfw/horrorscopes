@@ -11,12 +11,12 @@ const Form = ({starSigns, dispatch}) => (
   <div>
     <form>
       <input type="text" name="name" value="bob"></input>
-      <select name="horoscope_id">
+      <select onClick={() => dispatch(getStarSigns())} name="horoscope_id">
         {starSigns.map(renderStarSigns)}
       </select>
       <input type="submit" value="submit"></input>
     </form>
-    <button onClick={() => dispatch(getStarSigns())}>get options</button>
+    <button>get options</button>
   </div>
 )
 
