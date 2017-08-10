@@ -11,4 +11,9 @@ router.get('/users', (req, res) => {
     })
 })
 
+router.post('/users', (req, res) => {
+  let db = req.app.get('db')
+  usersDb.
+})
+
 module.exports = router

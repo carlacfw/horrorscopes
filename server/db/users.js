@@ -3,6 +3,11 @@ const getUsers = (db) => {
     .select('*')
 }
 
+const saveUser = (db) => {
+  return db('users')
+    .join('')
+}
+
 module.exports = {
   getUsers
 }
