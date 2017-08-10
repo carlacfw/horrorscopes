@@ -22,13 +22,14 @@ test.cb('testing GET /api/horoscopes & 12 horoscopes', t => {
 test.cb.only
 ('testing GET /api/horoscopes/aries for correct data', t => {
   request(t.context.app)
-    .get('/v1/api/horoscopes')
+    .get('/v1/api/horoscopes/Aries')
     .expect(200)
     .end((err,res) => {
       if (err) console.log(err);
       // console.log(res.body)
       t.is("Aries", res.body[0].star_signs)
-      t.true(res.body[0].image_url.length>0)
+      t.is(1, res.body.length)
+      t.regex(res.body[0].image_url, /Aries\.jpg/)
       t.true(res.body[0].horoscope_1.length>0)
       t.end()
     })
@@ -38,3 +39,4 @@ test.cb.only
 // truthy
 // falsy
 // is
+//regex

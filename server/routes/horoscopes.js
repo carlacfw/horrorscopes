@@ -11,4 +11,13 @@ router.get('/', (req, res) => {
     })
 })
 
+router.get("/:sign", (req, res) => {
+  let db = req.app.get('db')
+  horoscopesDb.getHoroscopeForSign(db, req.params.sign)
+    .then(horoscope => {
+      res.json(horoscope)
+    })
+})
+
+
 module.exports = router
