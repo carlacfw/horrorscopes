@@ -3,11 +3,19 @@ const getUsers = (db) => {
     .select('*')
 }
 
-const saveUser = (db) => {
+const addUser = (db, post) => {
+  return db('users').insert(post)
+}
+
+const getUserById = (db, id) => {
   return db('users')
-    .join('')
+    .where('id', id)
+    .first()
+
 }
 
 module.exports = {
-  getUsers
+  getUsers,
+  addUser,
+  getUserById
 }
