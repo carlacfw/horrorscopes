@@ -8,25 +8,33 @@ var setupDb = require('./setup-db')
 
 setupDb(test,createServer)
 
-test.cb('testing GET /api/horoscopes & res200', t => {
+test.cb('testing GET /api/horoscopes & 12 horoscopes', t => {
   request(t.context.app)
-    .get('/horoscopes')
+    .get('/v1/api/horoscopes')
     .expect(200)
     .end((err,res) => {
       if (err) console.log(err);
-      t.is(res.body.length, 3)
+      t.is(res.body.length, 12)
       t.end()
     })
 })
 
-test.cb.only('testing GET /api/horoscopes/aries if returns correct text', t => {
+test.cb.only
+('testing GET /api/horoscopes/aries for correct data', t => {
   request(t.context.app)
-    .get('/horoscopes/aries')
+    .get('/v1/api/horoscopes')
     .expect(200)
     .end((err,res) => {
       if (err) console.log(err);
-      console.log(res.body)
-      t.is("Aries", res.text)
+      // console.log(res.body)
+      t.is("Aries", res.body[0].star_signs)
+      t.true(res.body[0].image_url.length>0)
+      t.true(res.body[0].horoscope_1.length>0)
       t.end()
     })
 })
+
+// AVA ASSERTIONS:
+// truthy
+// falsy
+// is
