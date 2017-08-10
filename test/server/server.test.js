@@ -9,7 +9,7 @@ setupDb(test,createServer)
 
 test.cb('GET /', t => {
   request(t.context.app)
-    .get('/api/users')
+    .get('/v1/api/users')
     .expect(200)
     .end((err,res) => {
       if (err) console.log(err);
@@ -20,19 +20,20 @@ test.cb('GET /', t => {
 
 test.cb('read users db', t => {
   usersDb.getUsers(t.context.db)
-    .then(greetings => {
-      t.is(greetings.length, 3)
-      t.true(greetings[0].hasOwnProperty('text'))
+    .then(users => {
+      t.is(users.length, 3)
+      t.true(users[0].hasOwnProperty('name'))
       t.end()
     })
 })
 
 test.cb('POST /form', t => {
-usersDb.getUsers(t.context.db)
-    .post('api/users')
-    .send({name: 'bob3'})
+  request(t.context.app)
+    .post('/v1/api/users')
+    .send({name: 'bob4'})
     .end((err, res) => {
-      t.is(res.body.name, 'bob3')
+      t.is(err, null)
+      t.is(res.body.name, 'bob4')
       t.end()
     })
 })
