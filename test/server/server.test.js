@@ -2,7 +2,7 @@ var test = require('ava')
 var request = require('supertest')
 
 var createServer = require('../../server/server')
-var usersDb = require('../../server/db/greeting')
+var usersDb = require('../../server/db/users')
 var setupDb = require('./setup-db')
 
 setupDb(test,createServer)
@@ -27,7 +27,7 @@ test.cb('read users db', t => {
     })
 })
 
-test.cb.only('POST /form', t => {
+test.cb('POST /form', t => {
 usersDb.getUsers(t.context.db)
     .post('api/users')
     .send({name: 'bob3'})
