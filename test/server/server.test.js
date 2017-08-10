@@ -7,27 +7,18 @@ var setupDb = require('./setup-db')
 
 setupDb(test,createServer)
 
-test.cb('GET /v1/api/users', t => {
+test.cb('GET/v1/api/users', t => {
   request(t.context.app)
     .get('/v1/api/users')
     .expect(200)
     .end((err,res) => {
-      if (err) console.log(err);
+      if (err)
       t.is(res.body.length, 3)
       t.end()
     })
 })
 
-test.cb('read users db', t => {
-  usersDb.getUsers(t.context.db)
-    .then(users => {
-      t.is(users.length, 3)
-      t.true(users[0].hasOwnProperty('name'))
-      t.end()
-    })
-})
-
-test.cb.only('POST /v1/api/users', t => {
+test.cb('POST/v1/api/users', t => {
   request(t.context.app)
     .post('/v1/api/users')
     .send({name: 'bob4'})
