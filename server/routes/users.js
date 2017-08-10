@@ -3,7 +3,7 @@ var router = express.Router()
 
 var usersDb = require('../db/users')
 
-router.get('/users', (req, res) => {
+router.get('/', (req, res) => {
   let db = req.app.get('db')
   usersDb.getUsers(db)
     .then(users => {
