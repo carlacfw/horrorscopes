@@ -15,10 +15,9 @@ router.post('/', (req, res) => {
   let db = req.app.get('db')
   usersDb.addUser(db, req.body)
     .then((user_id) => {
-      console.log(user_id);
       usersDb.getUserById(db, user_id[0])
         .then(user => {
-          res.json(user)
+          res.status(201).json(user)
         })
     })
     .catch(err => res.status(500).send(err.message))

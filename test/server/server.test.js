@@ -7,7 +7,7 @@ var setupDb = require('./setup-db')
 
 setupDb(test,createServer)
 
-test.cb('GET /', t => {
+test.cb('GET /v1/api/users', t => {
   request(t.context.app)
     .get('/v1/api/users')
     .expect(200)
@@ -27,11 +27,16 @@ test.cb('read users db', t => {
     })
 })
 
-test.cb('POST /form', t => {
+test.cb.only('POST /v1/api/users', t => {
   request(t.context.app)
     .post('/v1/api/users')
     .send({name: 'bob4'})
+    .expect(201)
     .end((err, res) => {
+      t.context.db('users')
+      .then((data) => {
+        t.is(data.length, 4)
+      })
       t.is(err, null)
       t.is(res.body.name, 'bob4')
       t.end()
