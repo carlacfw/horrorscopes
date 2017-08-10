@@ -35,7 +35,7 @@ test.cb
     })
 })
 
-test.cb.only
+test.cb
 ('testing GET /api/horoscopes/aries for correct data', t => {
   request(t.context.app)
     .get('/v1/api/horoscopes/101')
