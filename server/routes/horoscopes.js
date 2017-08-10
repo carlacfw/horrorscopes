@@ -5,7 +5,6 @@ var horoscopesDb = require('../db/horoscopes')
 
 //all routes for  /v1/api/horoscopes
 
-
 router.get('/', (req, res) => {
   let db = req.app.get('db')
   horoscopesDb.getHoroscopes(db)

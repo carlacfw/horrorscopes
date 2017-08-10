@@ -7,7 +7,6 @@ exports.up = function(knex, Promise) {
     table.text('horoscope_1')
     table.text('horoscope_2')
   })
-
 };
 
 exports.down = function(knex, Promise) {
