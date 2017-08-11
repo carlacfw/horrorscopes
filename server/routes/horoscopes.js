@@ -3,7 +3,7 @@ var router = express.Router()
 
 var horoscopesDb = require('../db/horoscopes')
 
-router.get('/starSigns', (req, res) => {
+router.get('/starsigns', (req, res) => {
   let db = req.app.get('db')
   horoscopesDb.getStarSigns(db)
   .then(starSigns => {
