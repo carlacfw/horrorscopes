@@ -10,6 +10,7 @@
     "start": "node server/index",
     "test": "ava  -v  --serial 'test/**/*.test.js'",
     "test:server": "ava  -v  --serial 'test/server/*.test.js'",
+    "test:client": "ava  -v  --serial 'test/server/*.test.js'",
     "watch": "nodemon -e js,jsx -x npm test",
     "h:deploy": "git push heroku master",
     "h:migrate": "heroku run knex migrate:latest",
@@ -34,7 +35,7 @@
     "ava": "^0.19.1",
     "enzyme": "^2.8.2",
     "nodemon": "^1.11.0",
-    "sqlite3": "^3.1.8",
+    "sqlite3": "^3.1.9",
     "supertest": "^3.0.0"
   },
   "dependencies": {

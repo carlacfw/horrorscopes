@@ -20,8 +20,7 @@ test.cb.serial('testing GET /api/horoscopes & 12 horoscopes', t => {
 })
 
 
-test.cb.serial
-('testing GET /api/horoscopes/signs/aries for correct data', t => {
+test.cb.serial('testing GET /api/horoscopes/signs/aries for correct data', t => {
   request(t.context.app)
     .get('/v1/api/horoscopes/sign/Aries')
     .expect(200)
@@ -35,8 +34,7 @@ test.cb.serial
     })
 })
 
-test.cb.serial
-('testing GET /api/horoscopes/aries for correct data', t => {
+test.cb.serial('testing GET /api/horoscopes/aries for correct data', t => {
   request(t.context.app)
     .get('/v1/api/horoscopes/201')
     .expect(200)

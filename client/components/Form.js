@@ -11,16 +11,16 @@ const Form = ({starSigns, dispatch}) => (
   <div>
     <form>
       <input type="text" name="name" value="bob"></input>
-      <select onClick={() => dispatch(getStarSigns())} name="horoscope_id">
+      <select name="horoscope_id">
         {starSigns.map(renderStarSigns)}
       </select>
       <input type="submit" value="submit"></input>
     </form>
-    <button>get options</button>
   </div>
 )
 
 const mapStateToProps = (state) => {
+  console.log({state});
   return {starSigns: state.starSigns}
 }
 

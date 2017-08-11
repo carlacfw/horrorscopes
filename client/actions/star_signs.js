@@ -10,7 +10,7 @@ export const receiveStarSigns = (signs) => {
 export function getStarSigns () {
   return (dispatch) => {
     request
-      .get("/v1/api/horoscopes/starSigns")
+      .get(`/v1/api/horoscopes/starsigns`)
       .end((err, res) => {
         if (err) {
           console.error(err.message)

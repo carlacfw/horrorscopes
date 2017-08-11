@@ -8,6 +8,6 @@ import './setup-dom'
 App.prototype.componentDidMount = () => {}
 
 test('Hello World renders on App', t => {
-  const wrapper = shallow(<App />)
+  var wrapper = shallow(<App />)
   t.is(wrapper.find('h1').text(), 'Are you ready for your Horrorscope?')
 })
