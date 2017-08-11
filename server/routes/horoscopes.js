@@ -3,6 +3,7 @@ var router = express.Router()
 
 var horoscopesDb = require('../db/horoscopes')
 
+
 router.get("/:id", (req, res) => {
   let db = req.app.get('db')
   horoscopesDb.getHoroscopeForUser(db, req.params.id)
@@ -10,6 +11,7 @@ router.get("/:id", (req, res) => {
     res.json(userHoroscope)
   })
 })
+
 
 router.get('/', (req, res) => {
   let db = req.app.get('db')
@@ -20,6 +22,7 @@ router.get('/', (req, res) => {
 })
 
 router.get("/sign/:sign", (req, res) => {
+
   let db = req.app.get('db')
   horoscopesDb.getHoroscopeForSign(db, req.params.sign)
     .then(horoscope => {

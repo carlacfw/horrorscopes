@@ -19,6 +19,7 @@ test.cb.serial('testing GET /api/horoscopes & 12 horoscopes', t => {
     })
 })
 
+
 test.cb.serial
 ('testing GET /api/horoscopes/signs/aries for correct data', t => {
   request(t.context.app)
