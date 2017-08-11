@@ -10,7 +10,7 @@ const renderStarSigns = (sign) => (
 const Form = ({starSigns, dispatch}) => (
   <div>
     <form>
-      <input type="text" name="name" value="bob"></input>
+      <input type="text" name="name" value=""/>
       <select name="horoscope_id">
         {starSigns.map(renderStarSigns)}
       </select>
