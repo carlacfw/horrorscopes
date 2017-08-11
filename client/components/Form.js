@@ -14,7 +14,7 @@ const Form = ({starSigns, dispatch}) => (
       <select name="horoscope_id">
         {starSigns.map(renderStarSigns)}
       </select>
-      <input type="submit" value="submit"></input>
+      <input type="submit" value="submit"/>
     </form>
   </div>
 )
