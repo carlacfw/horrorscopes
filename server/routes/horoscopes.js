@@ -7,7 +7,6 @@ router.get('/starSigns', (req, res) => {
   let db = req.app.get('db')
   horoscopesDb.getStarSigns(db)
   .then(starSigns => {
-    console.log(starSigns)
     res.json(starSigns)
   })
 })
