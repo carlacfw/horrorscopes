@@ -4,7 +4,6 @@ const getHoroscopes = (db) => {
 }
 
 const getHoroscopeForSign = (db, sign) => {
-
   return db('horoscopes')
   .where("horoscopes.star_signs", sign)
 }
@@ -18,10 +17,16 @@ const getHoroscopeForUser = (db, id) => {
 
 }
 
+const getStarSigns = (db) => {
+  return db('horoscopes')
+    .select('id','star_signs')
+}
+
+
 
 module.exports = {
   getHoroscopes,
   getHoroscopeForSign,
-  getHoroscopeForUser
-
+  getHoroscopeForUser,
+  getStarSigns
 }
