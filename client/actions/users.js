@@ -29,6 +29,7 @@ export function addUserRequest(user) {
   return (dispatch) => {
     request
       .post('/v1/api/users')
+      .send(user)
       .end((err, res) => {
         if (err) console.log(err.message)
         dispatch(addUserAction(res.body))
