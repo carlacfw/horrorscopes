@@ -18,6 +18,7 @@ test.cb('GET/v1/api/users', t => {
     })
 })
 
+
 test.cb('POST/v1/api/users', t => {
   request(t.context.app)
     .post('/v1/api/users')
