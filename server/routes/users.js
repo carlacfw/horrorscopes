@@ -17,7 +17,7 @@ router.post('/', (req, res) => {
     .then((user_id) => {
       usersDb.getUserById(db, user_id[0])
         .then(user => {
-          res.json(user)
+          res.status(201).json(user)
         })
     })
     .catch(err => res.status(500).send(err.message))

@@ -12,7 +12,7 @@ test.cb('GET/v1/api/users', t => {
     .get('/v1/api/users')
     .expect(200)
     .end((err,res) => {
-      if (err) 
+      if (err)
       t.is(res.body.length, 3)
       t.end()
     })
@@ -23,7 +23,12 @@ test.cb('POST/v1/api/users', t => {
   request(t.context.app)
     .post('/v1/api/users')
     .send({name: 'bob4'})
+    .expect(201)
     .end((err, res) => {
+      t.context.db('users')
+      .then((data) => {
+        t.is(data.length, 4)
+      })
       t.is(err, null)
       t.is(res.body.name, 'bob4')
       t.end()
